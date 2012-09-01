@@ -14,6 +14,7 @@
   <target name="build" depends="clean" description="Baut die komplette Anwendung">
     <!-- Verzeichis anlegen -->
     <mkdir dir="${build.classes}"/>
+    <mkdir dir="${name}"/>
  
     <!-- Quelltext kompilieren -->
     <javac srcdir="${java.dir}"
@@ -43,6 +44,7 @@
     <!-- Löscht Dateien -->
     <delete dir="${build.dir}" />
     <delete dir="${dist.base}" />
+    <delete dir="${name}" />
     <delete dir="${defaultdist.dir}" />
     <delete> 
       <fileset dir="." includes="**/*~" defaultexcludes="no"/>
