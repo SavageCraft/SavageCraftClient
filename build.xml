@@ -52,7 +52,7 @@
 	</target>
 	<!-- Create Launchers -->
 	<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar :${launch4j.dir}/lib/xstream.jar" />
-	<target name="launchers">
+	<target name="launcher">
 		<!-- Windows Launcher -->
 		<echo message="Use Launch4J To Create Windows Launcher" />
 		<launch4j>
