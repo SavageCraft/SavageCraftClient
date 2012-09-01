@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="Mineshafter-Squared-Proxy">
+	<!-- variables setup -->
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+	<property name="launch4j.dir" location="/opt/l4j" />
+	<!-- Path Setup -->
+    <path id="Mineshafter-Squared-Proxy.classpath">
+        <pathelement location="bin"/>
+    </path>
+	<!-- init -->
+    <target name="init">
+        <mkdir dir="bin"/>
+    	<mkdir dir="dist"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+	<!-- clean -->
+    <target name="clean">
+        <delete dir="bin"/>
+    	<delete dir="dist"/>
+    </target>
+	<!-- default build -->
+    <target depends="init" name="build">
+    	<echo message="Compile"/>
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Mineshafter-Squared-Proxy.classpath"/>
+        </javac>
+    </target>
+	<!-- Make Jars -->
+	<target depends="build" name="compress">
+		<echo message="Compress"/>
+		<echo message="Build MineClient"/>
+		<jar destfile="dist/MineshafterSquared-Client.jar" basedir="bin">
+			<manifest>
+				<attribute name="Manifest-Version" value="1.0" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Main-Class" value="mineshafter.programs.MineClient" />
+			</manifest>
+		</jar>		
+	</target>
+</project>
