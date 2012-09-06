@@ -34,9 +34,9 @@ public class MineClient extends Applet {
 	private static final long serialVersionUID = 1L;
 	protected static String VERSION = "4.0.0";
 	
-	protected static String launcherDownloadURL = "http://build.spout.org/view/Legacy/job/SpoutcraftLauncher/lastStableBuild/artifact/target/launcher-2.0.0-SNAPSHOT.jar";
-	protected static String normalLauncherFilename = "Spoutcraft.jar";
-	protected static String hackedLauncherFilename = "Spoutcraft_modified.jar";
+	protected static String launcherDownloadURL = "https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft.jar";
+	protected static String normalLauncherFilename = "minecraft.jar";
+	protected static String hackedLauncherFilename = "minecraft_modified.jar";
 	protected static String MANIFEST_TEXT = "Manifest-Version: 1.2\nCreated-By: 1.6.0_22 (Sun Microsystems Inc.)\nMain-Class: net.minecraft.MinecraftLauncher\n";
 	
 	/* Added For MineshafterSquared */
@@ -65,7 +65,7 @@ public class MineClient extends Applet {
 		// check for MS2 updates
 		if(MS2Update())
 		{
-			JOptionPane.showMessageDialog(null, "An update for Mineshafter Squared is available, please go to " + authServer + " and redownload the proxy client.", "Update Available", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Es ist ein Update verfügbar, bitte besuche auth.savagecraft.de und downloade die neuste Version.", "Update Verfügbar", JOptionPane.PLAIN_MESSAGE);
 			System.exit(0);
 		}
 		
@@ -127,7 +127,7 @@ public class MineClient extends Applet {
 				URLClassLoader cl = new URLClassLoader(new URL[]{u}, Main.class.getClassLoader());
 				
 				@SuppressWarnings("unchecked")
-				Class<Frame> launcherFrame = (Class<Frame>) cl.loadClass("org.spoutcraft.launcher.Main");
+				Class<Frame> launcherFrame = (Class<Frame>) cl.loadClass("net.minecraft.LauncherFrame");
 				
 				String[] nargs;
 				try{
@@ -177,11 +177,9 @@ public class MineClient extends Applet {
 			while((entry = in.getNextEntry()) != null) {
 				n = entry.getName();
 				if(n.contains(".svn") || n.equals("META-INF/MOJANG_C.SF") || n.equals("META-INF/MOJANG_C.DSA") || n.equals("net/minecraft/minecraft.key") || n.equals("net/minecraft/Util$OS.class")) continue;
-				out.putNextEntry(new ZipEntry(entry.getName()));
+				out.putNextEntry(entry);
 				if(n.equals("META-INF/MANIFEST.MF")) dataSource = new ByteArrayInputStream(MANIFEST_TEXT.getBytes());
-				else if(n.equals("org/spoutcraft/launcher/api/util/Utils.class")) dataSource = Resources.load("org/spoutcraft/launcher/api/util/Utils.class");
-				else if(n.equals("org/spoutcraft/launcher/skin/LegacyLoginFrame.class")) dataSource = Resources.load("org/spoutcraft/launcher/skin/LegacyLoginFrame.class");
-				else if(n.equals("org/spoutcraft/launcher/StartupParameters.class")) dataSource = Resources.load("org/spoutcraft/launcher/StartupParameters.class");
+				else if(n.equals("net/minecraft/Util.class")) dataSource = Resources.load("net/minecraft/Util.class");
 				else dataSource = in;
 				Streams.pipeStreams(dataSource, out);
 				out.flush();

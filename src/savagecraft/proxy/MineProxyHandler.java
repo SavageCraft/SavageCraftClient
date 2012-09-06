@@ -73,8 +73,6 @@ public class MineProxyHandler extends Thread {
 		Matcher dl_bukkit = MineProxy.DL_BUKKIT.matcher(url);
 		Matcher client_snoop = MineProxy.CLIENT_SNOOP.matcher(url);
 		Matcher server_snoop = MineProxy.SERVER_SNOOP.matcher(url);
-		Matcher launcherSkinMatcher = MineProxy.LAUNCHER_SKIN_URL.matcher(url);
-		Matcher dl_spout = MineProxy.DL_SPOUT.matcher(url);
 		
 		
 		byte[] data = null;
@@ -219,19 +217,7 @@ public class MineProxyHandler extends Thread {
 				
 				e.printStackTrace();
 			}
-		} else if(dl_spout.matches())
-		{
-			data = getRequest(url);
-		} else if(launcherSkinMatcher.matches())
-		{
-			String username = launcherSkinMatcher.group(1);
-			url = "http://" + MineProxy.authServer + "/game/getskin/" + username;
-			//System.out.println("To: " + url);
-
-			data = getRequest(url); // Then get it...
-			//System.out.println("Response length: " + data.length);
 		}
-		// If Any other network request
 		else {
 			//System.out.println("No handler. Piping.");
 			

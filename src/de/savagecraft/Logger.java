@@ -2,7 +2,7 @@ package de.savagecraft;
 
 public class Logger {
 	
-	private static String logName = "[Mineshafter Squared]";
+	private static String logName = "[SavageCraft Client]";
 	
 	public static void logln(String output)
 	{
