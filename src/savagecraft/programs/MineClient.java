@@ -65,7 +65,7 @@ public class MineClient extends Applet {
 		// check for MS2 updates
 		if(MS2Update())
 		{
-			JOptionPane.showMessageDialog(null, "Es ist ein Update verfügbar, bitte besuche auth.savagecraft.de und downloade die neuste Version.", "Update Verfügbar", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Es ist ein Update verfuegbar, bitte besuche auth.savagecraft.de und downloade die neuste Version.", "Update Verfuegbar", JOptionPane.PLAIN_MESSAGE);
 			System.exit(0);
 		}
 		
