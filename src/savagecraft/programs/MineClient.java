@@ -32,7 +32,7 @@ import de.savagecraft.Settings;
 @SuppressWarnings("restriction")
 public class MineClient extends Applet {
 	private static final long serialVersionUID = 1L;
-	protected static String VERSION = "4.0.0";
+	protected static String VERSION = "4.0.1";
 	
 	protected static String launcherDownloadURL = "https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft.jar";
 	protected static String normalLauncherFilename = "minecraft.jar";
