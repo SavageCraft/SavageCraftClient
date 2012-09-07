@@ -17,7 +17,7 @@ import de.savagecraft.Settings;
 
 @SuppressWarnings("restriction")
 public class MineServer {
-	protected static String VERSION = "4.0.0";
+	protected static String VERSION = "4.0.1";
 
 	protected static String authServer = new String();
 	protected static File mineshaftersquaredPath;
